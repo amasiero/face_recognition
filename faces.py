@@ -9,7 +9,7 @@ known_face_encodings = []
 known_face_names = []
 
 for file in os.listdir(path):
-    face = face_recognition.load_image_file(path + file)
+    face = face_recognition.load_image_file(path + "/" + file)
     face_encoding = face_recognition.face_encodings(face)[0]
     known_face_encodings.append(face_encoding)
     known_face_names.append(file.split('.')[0])
