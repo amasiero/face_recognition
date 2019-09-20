@@ -5,6 +5,7 @@ import os
 import socket
 import time
 import json
+from datetime import datetime as dt
 
 path = "static/known_people"
 
@@ -46,10 +47,13 @@ while True:
             name = known_face_names[best_match_index]
             names.append(name)
 
-    message = {'founds' : names}
+    message = {'founds' : names, 'total_people' : len(face_locations), 'time' : str(dt.now())}
     json_message = json.dumps(message)
     server.sendto(bytes(json_message, 'UTF-8'), ('<broadcast>', 37020))
-    time.sleep(5)
+    with open('data.json', 'a+') as file:
+        file.write(json_message)
+        file.write('\n')
+    time.sleep(8)
 
         #cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
 
