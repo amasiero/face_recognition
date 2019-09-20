@@ -49,7 +49,7 @@ while True:
     message = {'founds' : names}
     json_message = json.dumps(message)
     server.sendto(bytes(json_message, 'UTF-8'), ('<broadcast>', 37020))
-    time.sleep(1)
+    time.sleep(5)
 
         #cv2.rectangle(frame, (left, top), (right, bottom), (0, 0, 255), 2)
 

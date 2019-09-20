@@ -15,6 +15,7 @@ function getFaces() {
   xhr.onload = function() {
     if(xhr.status == 200) {
       var names = JSON.parse(xhr.responseText);
+      console.log(names);
       names.founds.forEach(function(name) {
         createCard(name);
       });
